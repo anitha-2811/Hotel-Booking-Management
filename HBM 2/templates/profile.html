@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">Luxury Hotel</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/profile" class="active">Profile</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <h2 class="dashboard-title">User Profile</h2>
+        <div class="profile-card">
+            <h3>Account Information</h3>
+            <p><strong>Username:</strong> {{ username }}</p>
+            <p><strong>Role:</strong> Administrator</p>
+            <p><strong>Last Login:</strong> {{ datetime.now().strftime('%Y-%m-%d %H:%M:%S') }}</p>
+        </div>
+    </div>
+</body>
+</html>
+                <h3>Your Recent Bookings</h3>
+                <ul>
+                    {% for booking in bookings %}
+                        {% if booking.name == username %}
+                            <li class="booking-item">
+                                Room {{ booking.room }} ({{ booking.room_type }}) - {{ booking.date }}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="profile-activities">
+                <h3>Your Recent Activities</h3>
+                <div class="activity-list">
+                    {% if activities %}
+                        {% for activity in activities %}
+                            <div class="activity-item">
+                                <span class="activity-time">{{ activity.timestamp.strftime('%Y-%m-%d %H:%M') }}</span>
+                                <span class="activity-type">{{ activity.type }}</span>
+                                <p class="activity-desc">{{ activity.description }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No recent activities</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

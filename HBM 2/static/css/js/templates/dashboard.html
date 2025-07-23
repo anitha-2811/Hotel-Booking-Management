@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">Luxury Hotel</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/dashboard" class="active">Dashboard</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <h2 class="dashboard-title">Dashboard</h2>
+        
+        <div class="booking-form">
+            <form method="POST" action="/book">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Room No:</label>
+                    <input type="text" name="room" required>
+                </div>
+                <div class="form-group">
+                    <label>Date:</label>
+                    <input type="date" name="date" required>
+                </div>
+                <button type="submit" class="submit-btn">Book Room</button>
+            </form>
+        </div>
+
+        <div class="bookings-list">
+            <h3>Bookings:</h3>
+            <ul>
+                {% for b in bookings %}
+                    <li class="booking-item">{{ b.name }} booked Room {{ b.room }} on {{ b.date }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
