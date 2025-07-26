@@ -25,14 +25,14 @@
                 <div class="form-group">
                     <label>Name:</label>
                     <input type="text" name="name" required>
-                </div>
+               
                 <div class="form-group">
                     <label>Room Type:</label>
                     <select name="room_type" required>
                         <option value="AC-S">AC - Single Bed</option>
                         <option value="AC-D">AC - Double Bed</option>
                         <option value="NAC-S">Non-AC - Single Bed</option>
-                        <option value="NAC-D">Non-AC - Double Bed</option>
+                        <option value="NAC-D">Non-AC - Double Bed
                     </select>
                 </div>
                 <div class="form-group">
@@ -41,7 +41,7 @@
                         {% for room in available_rooms %}
                             <option value="{{ room.number }}">Room {{ room.number }} - {{ room.type }} ({{ room.bed_type }})</option>
                         {% endfor %}
-                    </select>
+                   
                 </div>
                 <div class="form-group">
                     <label>Date:</label>
@@ -59,7 +59,7 @@
                         <h4>Room {{ room.number }}</h4>
                         <p>Type: {{ room.type }}</p>
                         <p>Bed: {{ room.bed_type }}</p>
-                        <p>Status: {{ 'Available' if room.available else 'Occupied' }}</p>
+                        <p>Status: {{ 'Available' if room.available else 'Occupied' }}
                     </div>
                 {% endfor %}
             </div>
